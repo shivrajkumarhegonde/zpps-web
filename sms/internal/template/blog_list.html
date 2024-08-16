@@ -1,0 +1,102 @@
+<!-- templates/blog_list.html -->
+{% extends 'template/base.html' %}
+{% load static %}
+
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <title>Blogs</title>
+        <link href="{% static 'css/blogs.css' %}" rel="stylesheet">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{% static 'css/contact_us.css' %}" rel="stylesheet">
+        <style>
+
+        .blog-header {
+                background: linear-gradient(to right, #FF6347, #FF4500);
+                color: white;
+                padding: 10px;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+
+            .blog-card {
+                transition: transform 0.3s, box-shadow 0.3s;
+            }
+
+            .blog-card:hover {
+                transform: scale(1.05);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            }
+
+            .card-img-top {
+                height: 250px;
+                object-fill: cover;
+            }
+
+            .card-body {
+                background-color: #f8f9fa;
+            }
+
+            .btn-secondary {
+                margin-right: 10px;
+            }
+        </style>
+    </head>
+    <div class="container mt-5">
+        <div class="blog-header">
+            <h1>Blogs</h1>
+        </div>
+
+        <!-- Display the Create Blog button only if the user is authenticated -->
+        {% if user.is_authenticated %}
+            <div class="text-center mb-4">
+                <a class="btn btn-primary" href="{% url 'create_blog' %}">Create Blog</a>
+            </div>
+        {% endif %}
+
+        <!-- Display messages -->
+        <div class="container mt-3">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="container">
+            <div class="row">
+                {% for blog in blogs %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card blog-card">
+                            {% if blog.image %}
+                                <img src="{{ blog.image.url }}" class="card-img-top" alt="{{ blog.title }}">
+                            {% else %}
+                                <img src="{% static 'default_image.png' %}" class="card-img-top" alt="Default Image">
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{ blog.title }}</h5>
+                                <p class="card-text">{{ blog.content|truncatewords:30 }}</p>
+                                <!-- Display Edit and Delete buttons only if the user is authenticated -->
+                                {% if user.is_authenticated %}
+                                    <a class="btn btn-secondary" href="{% url 'update_blog' blog.id %}">Edit</a>
+                                    <form method="post" action="{% url 'delete_blog' blog.id %}" style="display:inline;">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

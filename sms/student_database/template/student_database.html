@@ -1,0 +1,35 @@
+{% extends 'template/base.html' %}
+{% load static %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/student_database.css' %}" rel="stylesheet">
+    <title>Student Database</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="text-center mb-5">
+            <b><h1 class="display-4 mb-3">Student Database</h1></b>
+            <b><p class="lead">Explore student details for 1st std to 7th std in a simple and accessible format.</p></b>
+        </div>
+
+        <div class="row">
+            {% for std, link in std_links.items %}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card border-primary shadow-lg">
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-3">{{ std }} std</h5>
+                        <a href="{{ link }}" target="_blank" class="btn btn-primary btn-lg">View Details</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+{% endblock %}

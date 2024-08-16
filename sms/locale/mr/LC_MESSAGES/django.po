@@ -1,0 +1,30 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-07-16 12:00+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: mr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "My Website"
+msgstr "माझी वेबसाइट"
+
+msgid "Welcome to My Website"
+msgstr "माझ्या वेबसाइटवर आपले स्वागत आहे"
+
+msgid "Home"
+msgstr "मुख्य पृष्ठ"
+
+msgid "About Us"
+msgstr "आमच्याबद्दल"
+
+msgid "Contact"
+msgstr "संपर्क"
+
+msgid "This is a sample paragraph that will be translated."
+msgstr "हे एक नमुना परिच्छेद आहे जो अनुवादित केला जाईल."

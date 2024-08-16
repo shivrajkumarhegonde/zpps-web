@@ -1,0 +1,16 @@
+<!-- templates/activities/delete_activity.html -->
+{% extends 'template/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+     <link href="{% static 'css/announcements.css' %}" rel="stylesheet">
+    <h1 class="text-center">Delete Activity</h1>
+    <p>Are you sure you want to delete the activity "{{ activity.title }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="{% url 'activity_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

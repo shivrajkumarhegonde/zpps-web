@@ -1,0 +1,121 @@
+{% extends 'template/base.html' %}
+{% load static %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>About Our ZPPS Kavathe School</title>
+     <link href="{% static 'css/student_database.css' %}" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .logo-container img {
+            max-width: 600px; /* Adjust the size as needed */
+            max-height: 600px; /* Adjust the size as needed */
+            border: 6px solid #2d88ff; /* Blue border with thickness */
+            border-radius: 50%; /* Make the image circular */
+            padding: 10px; /* Add padding inside the border */
+            display: block; /* Center the image horizontally */
+            margin: 0 auto; /* Center the image horizontally */
+        }
+
+        .bullet {
+            color: #2d88ff; /* Customize bullet color */
+            font-size: 1.5em; /* Adjust bullet size */
+            margin-right: 10px; /* Space between bullet and text */
+        }
+
+        .section-header {
+            color: #2d88ff;
+            border-bottom: 2px solid #2d88ff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .list-group-item {
+            font-family: Arial, sans-serif;
+        }
+
+        .list-group-item span {
+            color: #2d88ff;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="text-center">
+            <h1 class="section-header">About Our ZPPS Kavathe School</h1>
+            <div class="image-container my-4">
+                <img src="{% static '11.jpeg' %}" alt="Description of Image" class="img-fluid rounded">
+            </div>
+        </div>
+
+        <b><p>ZPPS Kavathe was established in 1938 and is managed by the local body. It is located in a picturesque rural area, specifically in the Solapur North block of Solapur district, Maharashtra. The school consists of grades from 1 to 7 and is co-educational, creating a balanced and inclusive environment for all students.</p></b>
+
+        <b><p>The medium of instruction at this school is Marathi, promoting local culture and language. The school operates on a regular schedule with the academic session starting in April. The school has a government building with the following outstanding facilities:</p></b>
+
+        <ul class="list-group mb-4">
+            <li class="list-group-item"><span class="bullet">•</span> 7 well-maintained classrooms for instructional purposes</li>
+            <li class="list-group-item"><span class="bullet">•</span> 2 additional rooms for non-teaching activities</li>
+            <li class="list-group-item"><span class="bullet">•</span> A dedicated room for the headmaster/teacher</li>
+            <li class="list-group-item"><span class="bullet">•</span> A secure boundary wall</li>
+            <li class="list-group-item"><span class="bullet">•</span> Reliable electric connection</li>
+            <li class="list-group-item"><span class="bullet">•</span> Functional tap water as a source of drinking water</li>
+            <li class="list-group-item"><span class="bullet">•</span> A spacious playground for sports and recreational activities</li>
+            <li class="list-group-item"><span class="bullet">•</span> A library with a collection of 250 books, fostering a love for reading</li>
+        </ul>
+
+        <p><b>The school takes pride in its vibrant extracurricular activities, including sports, arts, and cultural events, providing a holistic education experience. Our dedicated staff and teachers are committed to nurturing the potential of each student, ensuring they excel academically and personally.</b></p>
+
+        <p><b>Additionally, the school provides nutritious mid-day meals prepared on the premises, ensuring the health and well-being of our students. We strive to create a safe, supportive, and enriching environment where every child can thrive.</b></p>
+
+        <div class="text-center my-4">
+            <h2 class="section-header"><span class="bullet">•</span> Join Us</h2>
+            <p><b>We invite you to join the ZPPS Kavathe community and be a part of our journey towards excellence in education. Together, we can make a difference and build a brighter future for our children.</b></p>
+            <div class="logo-container my-5">
+                <img src="{% static 'mission-vision.png' %}" alt="School Logo" class="img-fluid rounded">
+            </div>
+        </div>
+
+        <section class="mt-4">
+            <h2 class="section-header"><span class="bullet">•</span> Mission</h2>
+            <p>Our mission is to educate students to the highest levels of academic achievement, to enable them to reach and expand their potential, and to prepare them to become productive, responsible, ethical, creative, and compassionate members of society.</p>
+        </section>
+
+        <section class="mt-4">
+            <h2 class="section-header"><span class="bullet">•</span> Vision</h2>
+            <p>Our vision is to be a leading educational institution, recognized for our innovative approach to education, our commitment to student success, and our dedication to community engagement and service.</p>
+        </section>
+
+        <section class="mt-4">
+            <h2 class="section-header"><span class="bullet">•</span> History</h2>
+            <p>Established in 1938, our school has a rich history of academic excellence and community involvement. Over the years, we have evolved to meet the changing needs of our students and the community, while staying true to our core values of integrity, respect, and responsibility.</p>
+        </section>
+
+        <section class="mt-4">
+            <h2 class="section-header"><span class="bullet">•</span> Core Values</h2>
+            <ul class="list-group mb-4">
+                <li class="list-group-item">
+                    <span class="bullet">•</span>
+                    <strong>Integrity:</strong> We act with honesty and integrity, not compromising the truth.
+                </li>
+                <li class="list-group-item">
+                    <span class="bullet">•</span>
+                    <strong>Respect:</strong> We treat our students, staff, and community with respect and dignity.
+                </li>
+                <li class="list-group-item">
+                    <span class="bullet">•</span>
+                    <strong>Responsibility:</strong> We are responsible for our actions and decisions, and we take accountability for our outcomes.
+                </li>
+                <li class="list-group-item">
+                    <span class="bullet">•</span>
+                    <strong>Excellence:</strong> We strive for excellence in all that we do, and we are committed to continuous improvement.
+                </li>
+                <li class="list-group-item">
+                    <span class="bullet">•</span>
+                    <strong>Community:</strong> We value our community and work together to make it a better place.
+                </li>
+            </ul>
+        </section>
+    </div>
+{% endblock %}

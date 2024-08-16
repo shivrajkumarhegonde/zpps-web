@@ -1,0 +1,78 @@
+<!-- templates/activities/activities.html -->
+{% extends 'template/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <link href="{% static 'css/announcements.css' %}" rel="stylesheet">
+    <style>
+        .activities-header {
+            background-color: #f8f9fa; /* Light background color */
+            padding: 5px 5px; /* Add padding */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            margin-bottom: 20px; /* Space below header */
+        }
+
+        .activities-header h1 {
+            background: linear-gradient(to bottom, #FF6347, #FF4500); /* Gradient background */
+            color: #ffffff; /* White text color */
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .activities-header p {
+            font-size: 1.25rem;
+            color: #007bff; /* New color for the paragraph text */
+        }
+    </style>
+    <div class="activities-header text-center">
+        <h1>Activities</h1>
+        <p class="lead">ZPPS Kavathe School Activities</p>
+    </div>
+    {% if user.is_authenticated %}
+    <div class="text-center mb-3">
+        <a href="{% url 'create_activity' %}" class="btn btn-primary">Create New Activity</a>
+    </div>
+    {% endif %}
+    <div class="row">
+        {% for activity in activities %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">{{ activity.title }}</h3>
+                    <p class="card-text">{{ activity.description }}</p>
+                    <div id="carousel{{ activity.id }}" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            {% for image in activity.images.all %}
+                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                <img src="{{ image.image.url }}" class="d-block w-100" alt="{{ activity.title }}">
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <a class="carousel-control-prev" href="#carousel{{ activity.id }}" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carousel{{ activity.id }}" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    {% if user.is_authenticated %}
+                    <div class="mt-3">
+                        <a href="{% url 'edit_activity' activity.pk %}" class="btn btn-secondary">Edit</a>
+                        <form action="{% url 'delete_activity' activity.pk %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

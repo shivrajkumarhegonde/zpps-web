@@ -1,0 +1,66 @@
+<!-- templates/zpps_faculty/faculty_list.html -->
+{% extends 'template/base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Include Custom CSS -->
+    <style>
+        .faculty-header {
+            padding: 20px; /* Add padding */
+            border-radius: 20px; /* Rounded corners */
+            margin-bottom: 5px; /* Space below header */
+        }
+
+        .faculty-header h2 {
+            background: linear-gradient(to right, #007bff, #0056b3); /* Gradient background */
+            color: #ffffff; /* White text color */
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .create-faculty-btn {
+            border-radius: 20px; /* Rounded button corners */
+        }
+    </style>
+
+    <div class="container mt-5">
+        <div class="faculty-header text-center">
+            <h2>Faculty Members</h2>
+        </div>
+
+        <!-- Display the Create Faculty button only if the user is authenticated -->
+        {% if user.is_authenticated %}
+            <div class="text-center mb-4">
+                <link href="{% static 'css/student_database.css' %}" rel="stylesheet">
+                <a class="btn btn-primary create-faculty-btn" href="{% url 'create_faculty' %}">Create Faculty</a>
+            </div>
+        {% endif %}
+
+        <div class="row">
+            {% for faculty in faculties %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        {% if faculty.image %}
+                            <img src="{{ faculty.image.url }}" class="card-img-top" alt="{{ faculty.name }}">
+                        {% else %}
+                            <img src="{% static 'default_image.png' %}" class="card-img-top" alt="Default Image">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ faculty.name }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ faculty.position }}</h6>
+                            <p class="card-text">{{ faculty.bio|truncatewords:30 }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}

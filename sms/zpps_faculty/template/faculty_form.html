@@ -1,0 +1,17 @@
+{% extends 'internal/template/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h2>Create/Update Faculty</h2>
+<link href="{% static 'css/faculty.css' %}" rel="stylesheet">
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% if user.is_authenticated %}
+        <button type="submit" class="btn btn-primary">Save</button>
+    {% else %}
+        <p>Please <a href="{% url 'login' %}">login</a> to create or update faculty members.</p>
+    {% endif %}
+</form>
+{% endblock %}

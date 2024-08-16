@@ -1,0 +1,13 @@
+{% extends 'template/base.html' %}
+{% load static %}  <!-- Load the static files tag -->
+{% block content %}
+<div class="container mt-5">
+    <h1>Login</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <link href="{% static 'css/login.css' %}" rel="stylesheet"> <!-- Move this line out of the <head> tag -->
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>
+{% endblock %}

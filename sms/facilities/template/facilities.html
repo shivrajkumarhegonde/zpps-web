@@ -1,0 +1,163 @@
+<!-- template/facilities/facilities_list.html -->
+{% extends 'template/base.html' %}
+{% load static %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facilities</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/facilities.css' %}" rel="stylesheet">
+    <style>
+        .facility-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .facility-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .facility-image {
+            height: 200px;
+            object-fit: cover;
+        }
+        .facility-header {
+            background: linear-gradient(to bottom, #007bff, #6c757d);
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .facility-header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card-text {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="facility-header">
+            <h1>Our Facilities</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card facility-card">
+                    <img src="{% static '33.jpeg' %}" class="card-img-top facility-image" alt="Spacious Ground">
+                    <div class="card-body">
+                        <h5 class="card-title">Spacious and Well-Maintained Ground</h5>
+                        <p class="card-text">Zilla Parishad Primary School Kavthe boasts a beautiful, spacious, and meticulously maintained ground. It serves as an ideal space for outdoor activities, sports events, and recreational purposes. The lush green surroundings provide a serene and invigorating environment for students.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card facility-card">
+                    <img src="{% static '11.jpeg' %}" class="card-img-top facility-image" alt="Hygienic Kitchen">
+                    <div class="card-body">
+                        <h5 class="card-title">Hygienic Mid-Day Meal Kitchen</h5>
+                        <p class="card-text">The school is proud of its neat and clean kitchen where nutritious mid-day meals are prepared daily for the students. Strict hygiene standards are adhered to, ensuring the health and well-being of the children. The kitchen staff is dedicated to providing fresh and wholesome meals.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card facility-card">
+                    <img src="{% static 'computer.jpg' %}" class="card-img-top facility-image" alt="Advanced Computer Lab">
+                    <div class="card-body">
+                        <h5 class="card-title">Advanced Computer Lab</h5>
+                        <p class="card-text">Equipped with modern computers and the latest software, our computer lab is a hub of technological learning. Students get hands-on experience with computers, enhancing their digital literacy and preparing them for the future. The lab is supervised by knowledgeable instructors who guide students in their digital journey.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card facility-card">
+                    <img src="{% static 'decoration.jpg' %}" class="card-img-top facility-image" alt="Student-Created Decorations">
+                    <div class="card-body">
+                        <h5 class="card-title">Student-Created Decorations</h5>
+                        <p class="card-text">One of the unique features of our school is the vibrant and creative decorations made from the handiwork of our talented students. These decorations not only beautify the school environment but also showcase the artistic skills and creativity of our students, fostering a sense of pride and accomplishment.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card facility-card">
+                    <img src="{% static '33.jpeg' %}" class="card-img-top facility-image" alt="Digital Screen and Projector">
+                    <div class="card-body">
+                        <h5 class="card-title">State-of-the-Art Digital Screen and Projector</h5>
+                        <p class="card-text">To enhance the learning experience, our classrooms are equipped with a state-of-the-art digital screen and projector. These tools are used to deliver interactive and engaging lessons, making learning more enjoyable and effective. Multimedia presentations, educational videos, and interactive sessions bring subjects to life, captivating the students' attention.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card facility-card">
+                    <img src="{% static '33.jpeg' %}" class="card-img-top facility-image" alt="Well-Stocked Library">
+                    <div class="card-body">
+                        <h5 class="card-title">Well-Stocked Library</h5>
+                        <p class="card-text">Our well-stocked library is a treasure trove of knowledge, offering a wide range of books, magazines, and educational resources. It provides a quiet and conducive environment for reading and research. Students are encouraged to cultivate a love for reading and explore various subjects beyond their textbooks.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card facility-card">
+                    <img src="{% static '33.jpeg' %}" class="card-img-top facility-image" alt="Modern Science Laboratory">
+                    <div class="card-body">
+                        <h5 class="card-title">Modern Science Laboratory</h5>
+                        <p class="card-text">The school has a modern science laboratory where students can conduct experiments and explore the wonders of science. The lab is equipped with the necessary apparatus and materials to facilitate practical learning, making scientific concepts more tangible and comprehensible.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card facility-card">
+                    <img src="{% static 'garden.jpg' %}" class="card-img-top facility-image" alt="Eco-Friendly Initiatives">
+                    <div class="card-body">
+                        <h5 class="card-title">Eco-Friendly Initiatives</h5>
+                        <p class="card-text">We are committed to promoting sustainability and environmental awareness. The school has implemented various eco-friendly initiatives, such as rainwater harvesting, waste segregation, and a small garden maintained by the students. These initiatives instill a sense of responsibility towards the environment in our students.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card facility-card">
+                    <img src="{% static '33.jpeg' %}" class="card-img-top facility-image" alt="Interactive Learning Zones">
+                    <div class="card-body">
+                        <h5 class="card-title">Interactive Learning Zones</h5>
+                        <p class="card-text">In addition to traditional classrooms, the school features interactive learning zones where students can engage in group activities, discussions, and collaborative projects. These zones are designed to foster teamwork, communication, and critical thinking skills.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card facility-card">
+                    <img src="{% static 'campus.jpg' %}" class="card-img-top facility-image" alt="Safe and Secure Campus">
+                    <div class="card-body">
+                        <h5 class="card-title">Safe and Secure Campus</h5>
+                        <p class="card-text">The safety and security of our students are paramount. The school premises are monitored by CCTV cameras, and we have a well-trained security staff to ensure a safe and secure environment. Regular safety drills and protocols are in place to handle emergencies efficiently.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+{% endblock %}

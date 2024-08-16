@@ -1,0 +1,16 @@
+<!-- templates/zpps_faculty/edit_faculty_member.html -->
+{% extends 'template/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+     <link href="{% static 'css/faculty.css' %}" rel="stylesheet">
+    <h1>Edit Faculty Member</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Save</button>
+        <a href="{% url 'zpps_faculty' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

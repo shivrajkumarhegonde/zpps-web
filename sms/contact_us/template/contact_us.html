@@ -1,0 +1,28 @@
+<!-- templates/contact_us.html -->
+{% extends 'template/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+
+        <b><title>{% trans "Contact Us" %}</title></b>
+        <link href="{% static 'css/contact_us.css' %}" rel="stylesheet">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <div class="container mt-5">
+        <b><h1 class="text-center mb-4">Contact Us</h1></b>
+    </div>
+    <body>
+        <div class="container mt-4">
+            <p>For more information about our school, please contact us at:</p>
+            <li><b>Head Master (Shri. Shantappa Hegonde Sir)</b></li>
+            <b><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contact: 9921033202</p></b>
+            <b><li>E-mail</li></b>
+            <b><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email: kavathezpps@gmail.com</p></b>
+            <b><li>Address</li></b>
+            <b><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;At.post Kavathe, Tal. North Solapur, Dist. Solapur</p></b>
+        </div>
+    </body>
+{% endblock %}

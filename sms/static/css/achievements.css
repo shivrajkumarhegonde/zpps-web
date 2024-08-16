@@ -1,0 +1,72 @@
+/* Container for achievements, with added padding and rounded corners */
+.achievements-container {
+    border: 1px solid #ddd; /* Border color and style */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    background-color: #f8f9fa; /* Light background color */
+    padding: 20px; /* Inner spacing */
+    margin-top: 30px; /* Space above the container */
+    position: relative; /* Position relative to contain the scrolling content */
+}
+
+/* Header for the achievements section with gradient background */
+.achievements-header {
+    background: linear-gradient(to bottom, #FF6347, #FF4500); /* Gradient from tomato to orange */
+    color: #ffffff; /* White text color */
+    padding: 10px; /* Inner spacing */
+    border-radius: 8px; /* Rounded corners */
+    margin-bottom: 20px; /* Space below the header */
+}
+
+/* Main heading style */
+.achievements-header h1 {
+    margin: 0; /* Remove default margin */
+    font-size: 2.5rem; /* Font size for heading */
+    text-align: center; /* Center align the text */
+}
+
+/* Wrapper for scrolling content with hidden overflow */
+.marquee-wrapper {
+    height: 500px; /* Adjust the height of the scrolling area */
+    overflow: hidden; /* Hide overflow to create scrolling effect */
+    position: relative; /* Position relative to contain the scrolling content */
+    background-color: #ffffff; /* Background color */
+    border: 1px solid #ddd; /* Border color and style */
+    border-radius: 10px; /* Rounded corners */
+    padding: 15px; /* Inner spacing */
+}
+
+/* Content to be scrolled */
+.marquee-content {
+    position: absolute; /* Position absolutely for animation */
+    width: 100%; /* Full width of the wrapper */
+    animation: scrollDown 30s linear infinite; /* Animation for scrolling effect */
+}
+
+/* Keyframes for scrolling content from top to bottom */
+@keyframes scrollDown {
+    0% {
+        transform: translateY(-100%); /* Start position above the view */
+    }
+    100% {
+        transform: translateY(100%); /* End position below the view */
+    }
+}
+
+/* Style for individual list items */
+.list-item {
+    margin-bottom: 15px; /* Space between list items */
+}
+
+/* Style for each list item heading */
+.list-item h4 {
+    margin: 0; /* Remove default margin */
+    padding: 10px; /* Inner spacing */
+    background-color: #e9ecef; /* Light gray background for list items */
+    border-radius: 5px; /* Rounded corners for list items */
+}
+
+/* Remove default list styling */
+.list-item h4 li {
+    list-style: none; /* Remove bullet points from list items */
+}

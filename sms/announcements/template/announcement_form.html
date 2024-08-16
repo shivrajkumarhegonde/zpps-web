@@ -1,0 +1,21 @@
+{% extends 'template/base.html' %}
+{% load static %}
+
+{% block content %}
+<head>
+    <link href="{% static 'css/announcements.css' %}" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Announcement Form</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <link href="{% static 'css/activities.css' %}" rel="stylesheet">
+        <h1>{{ form.instance.pk|default:"New" }} Announcement</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</body>
+{% endblock %}
