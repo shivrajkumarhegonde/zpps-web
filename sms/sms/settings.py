@@ -50,7 +50,7 @@ SECRET_KEY = 'django-insecure-p=d8mc6dyr*4!octgz9mm2^#bjqy+2s!i#7#y2huv6jk#i*3r+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.106.1', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['192.168.106.1', '127.0.0.1', 'localhost','zpps-web.onrender.com']
 from django.urls import reverse_lazy
 
 LOGIN_REDIRECT_URL = reverse_lazy('faculty_list')
