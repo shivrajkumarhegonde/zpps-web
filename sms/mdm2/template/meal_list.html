@@ -1,0 +1,135 @@
+{% extends 'template/base.html' %}
+{% load static %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal List</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.6s ease-in-out;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+            animation: slideIn 0.6s ease-in-out;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+        }
+        .btn-primary {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background-color: #45a049;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+        }
+        .btn-danger {
+            background-color: #f44336;
+            color: #fff;
+        }
+        .btn-danger:hover {
+            background-color: #e31b0c;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Meal List</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>अ.क्रं.</th>
+                    <th>वार</th>
+                    <th>पदार्थ</th>
+                    <th>खीर</th>
+                    <th>स्प्राऊट्स</th>
+                      {% if user.is_authenticated %}
+                    <th>Actions</th>
+                     {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for meal in meals %}
+                <tr>
+                    <td>{{ meal.sr_no }}</td>
+                    <td>{{ meal.day }}</td>
+                    <td>{{ meal.dish }}</td>
+                    <td>{{ meal.kheer }}</td>
+                    <td>{{ meal.sprouts }}</td>
+                    <td>
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'meal_edit' meal.pk %}" class="btn btn-primary">Edit</a>
+                        <a href="{% url 'meal_confirm_delete' meal.pk %}" class="btn btn-danger">Delete</a>
+                         {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% if user.is_authenticated %}
+        <a href="{% url 'meal_add' %}" class="btn btn-primary">Add Meal</a>
+        {% endif %}
+    </div>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+{% endblock %}
