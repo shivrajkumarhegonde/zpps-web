@@ -1,51 +1,69 @@
-<!-- templates/blog_list.html -->
 {% extends 'template/base.html' %}
 {% load static %}
 
 {% block content %}
-    <head>
-        <meta charset="UTF-8">
-        <title>Blogs</title>
-        <link href="{% static 'css/blogs.css' %}" rel="stylesheet">
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-        <link href="{% static 'css/contact_us.css' %}" rel="stylesheet">
-        <style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/blogs.css' %}" rel="stylesheet">
+    <link href="{% static 'css/contact_us.css' %}" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
 
         .blog-header {
-                background: linear-gradient(to right, #FF6347, #FF4500);
-                color: white;
-                padding: 10px;
-                border-radius: 10px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                text-align: center;
-                margin-bottom: 20px;
-            }
+            background: linear-gradient(to right, #FF6347, #FF4500);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-in-out;
+        }
 
+        .blog-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
 
-            .blog-card {
-                transition: transform 0.3s, box-shadow 0.3s;
-            }
+        .blog-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
 
-            .blog-card:hover {
-                transform: scale(1.05);
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-            }
+        .card-img-top {
+            width: 100%; /* Ensure the image covers the width */
+            height: 350px; /* Adjust height for consistent display */
+            object-fit: cover; /* Cover ensures the image fills the area */
+        }
 
-            .card-img-top {
-                height: 250px;
-                object-fill: cover;
-            }
+        .card-body {
+            background-color: #ffffff;
+            padding: 20px;
+        }
 
-            .card-body {
-                background-color: #f8f9fa;
-            }
+        .btn-secondary {
+            margin-right: 10px;
+        }
 
-            .btn-secondary {
-                margin-right: 10px;
-            }
-        </style>
-    </head>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
     <div class="container mt-5">
+        <!-- Blog Header -->
         <div class="blog-header">
             <h1>Blogs</h1>
         </div>
@@ -53,7 +71,9 @@
         <!-- Display the Create Blog button only if the user is authenticated -->
         {% if user.is_authenticated %}
             <div class="text-center mb-4">
-                <a class="btn btn-primary" href="{% url 'create_blog' %}">Create Blog</a>
+                <a class="btn btn-primary btn-lg" href="{% url 'create_blog' %}">
+                    <i class="fas fa-plus"></i> Create Blog
+                </a>
             </div>
         {% endif %}
 
@@ -71,6 +91,7 @@
             {% endif %}
         </div>
 
+        <!-- Blog Cards -->
         <div class="container">
             <div class="row">
                 {% for blog in blogs %}
@@ -86,10 +107,14 @@
                                 <p class="card-text">{{ blog.content|truncatewords:30 }}</p>
                                 <!-- Display Edit and Delete buttons only if the user is authenticated -->
                                 {% if user.is_authenticated %}
-                                    <a class="btn btn-secondary" href="{% url 'update_blog' blog.id %}">Edit</a>
+                                    <a class="btn btn-secondary btn-sm" href="{% url 'update_blog' blog.id %}">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </a>
                                     <form method="post" action="{% url 'delete_blog' blog.id %}" style="display:inline;">
                                         {% csrf_token %}
-                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="fas fa-trash"></i> Delete
+                                        </button>
                                     </form>
                                 {% endif %}
                             </div>
@@ -99,4 +124,12 @@
             </div>
         </div>
     </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Font Awesome for icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+</body>
 {% endblock %}

@@ -7,18 +7,64 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="{% static 'css/student_database.css' %}" rel="stylesheet">
     <title>Student Database</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .container {
+            padding-top: 30px;
+        }
+        .card {
+            border: 2px solid #007bff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        .card-body {
+            padding: 20px;
+            animation: fadeInUp 0.6s ease-in-out;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        .text-center h1, .text-center p {
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-5">
         <div class="text-center mb-5">
-            <b><h1 class="display-4 mb-3">Student Database</h1></b>
-            <b><p class="lead">Explore student details for 1st std to 7th std in a simple and accessible format.</p></b>
+            <h1 class="display-4 mb-3">Student Database</h1>
+            <p class="lead">Explore student details for 1st std to 7th std in a simple and accessible format.</p>
         </div>
 
         <div class="row">
             {% for std, link in std_links.items %}
             <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card border-primary shadow-lg">
+                <div class="card shadow-lg">
                     <div class="card-body text-center">
                         <h5 class="card-title mb-3">{{ std }} std</h5>
                         <a href="{{ link }}" target="_blank" class="btn btn-primary btn-lg">View Details</a>

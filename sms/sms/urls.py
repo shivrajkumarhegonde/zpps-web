@@ -23,6 +23,8 @@ urlpatterns = [
     path('faculty/', include('zpps_faculty.urls')),
     path('internal/', include('internal.urls')),
     path('users/', include('users.urls')),  # Include users app URLs
+    #path('mdm/', include('mdm.urls')),
+    path('mdm2/', include('mdm2.urls')),
 ]
 
 

@@ -2,36 +2,20 @@
 {% load static %}
 
 {% block content %}
-<style>
-        .school-heading {
-
-            align-items: center;
-            background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
-            padding: 20px;
-            border-radius: 8px;
-
-        }
-        .school-heading h2 {
-            align-items: center;
-            margin: 0;
-            color: white; /* Added white color for text to stand out against gradient */
-        }
-    </style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to ZPPS Kavathe School Management System</title>
-    <marquee behavior="scroll" direction="left" scrollamount="8">
-           <h2><b>मुख्यमंत्री माझी शाळा सुंदर शाळा उपक्रमात जि.प.प्रा शाळा कवठे तालुक्यात प्रथम</b></h2>
-        </marquee>
     <link href="{% static 'css/homescreen.css' %}" rel="stylesheet">
 </head>
 <body>
-    <div class="school-heading text-center py-3">
-
+    <div class="school-heading">
         <h1>Welcome to the ZPPS Kavathe School Management System</h1>
-
     </div>
+
+    <marquee behavior="scroll" direction="left" scrollamount="8">
+        <h2><b>मुख्यमंत्री माझी शाळा सुंदर शाळा उपक्रमात जि.प.प्रा शाळा कवठे तालुक्यात प्रथम</b></h2>
+    </marquee>
 
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -67,7 +51,7 @@
                     <div class="card-body">
                         <h2 class="card-title">Announcements</h2>
                         <p class="card-text">Latest announcements...</p>
-                        <a href="{% url 'announcements' %}"class="btn btn-primary">Read More</a>
+                        <a href="{% url 'announcements' %}" class="btn btn-primary">Read More</a>
                     </div>
                 </div>
             </div>
@@ -76,7 +60,7 @@
                     <div class="card-body">
                         <h2 class="card-title">About Us</h2>
                         <p class="card-text">Information about the school...</p>
-                        <a href="{% url 'about_school' %}"class="btn btn-primary">Read More</a>
+                        <a href="{% url 'about_school' %}" class="btn btn-primary">Read More</a>
                     </div>
                 </div>
             </div>
