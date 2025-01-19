@@ -20,7 +20,7 @@ def ebook_list(request):
     ebooks = EBook.objects.all()
     return render(request, 'student_database/template/ebook_list.html', {'ebooks': ebooks})
 
-
+@login_required
 def ebook_upload(request):
     if request.method == 'POST':
         form = EBookForm(request.POST, request.FILES)
@@ -31,22 +31,10 @@ def ebook_upload(request):
         form = EBookForm()
     return render(request, 'student_database/template/ebook_upload.html', {'form': form})
 
-
+@login_required
 def ebook_delete(request, ebook_id):
     ebook = get_object_or_404(EBook, id=ebook_id)
     if request.method == 'POST':
         ebook.delete()
         return redirect('ebook_list')
     return render(request, 'student_database/template/ebook_delete_confirm.html', {'ebook': ebook})
-
-
-def test_pdf_conversion():
-    poppler_path = r'C:\Program Files\poppler-24.07.0\Library\bin'
-    pdf_path = r'C:\Users\Shivkumar Hegonde\PycharmProjects\schoolsystem\sms\media\Mukhyamantri mazi shala.pdf'
-    try:
-        pdf_pages = convert_from_path(pdf_path, first_page=1, last_page=1, poppler_path=poppler_path)
-        print(f"Number of pages: {len(pdf_pages)}")
-    except Exception as e:
-        print(f"Error: {e}")
-
-test_pdf_conversion()

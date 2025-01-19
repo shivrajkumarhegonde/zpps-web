@@ -1,0 +1,13 @@
+{% extends 'template/base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Delete Mid Day Meal</h2>
+<link rel="stylesheet" href="{% static 'css/mdm.css' %}">
+<p>Are you sure you want to delete the meal for {{ meal.day }}?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="{% url 'mdm_list' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

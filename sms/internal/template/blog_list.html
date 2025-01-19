@@ -10,7 +10,6 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="{% static 'css/blogs.css' %}" rel="stylesheet">
-    <link href="{% static 'css/contact_us.css' %}" rel="stylesheet">
 
     <style>
         body {
@@ -25,39 +24,35 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             text-align: center;
             margin-bottom: 30px;
-            animation: fadeIn 1s ease-in-out;
         }
 
         .blog-card {
-            border: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
             border-radius: 10px;
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        .blog-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        .blog-card.in-view {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .card-img-top {
-            width: 100%; /* Ensure the image covers the width */
-            height: 350px; /* Adjust height for consistent display */
-            object-fit: cover; /* Cover ensures the image fills the area */
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: transform 0.3s;
         }
 
-        .card-body {
-            background-color: #ffffff;
-            padding: 20px;
+        .blog-card:hover .card-img-top {
+            transform: scale(1.1);
         }
 
         .btn-secondary {
             margin-right: 10px;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
     </style>
 </head>
@@ -77,35 +72,19 @@
             </div>
         {% endif %}
 
-        <!-- Display messages -->
-        <div class="container mt-3">
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %} alert-dismissible fade show" role="alert">
-                        {{ message }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                {% endfor %}
-            {% endif %}
-        </div>
-
         <!-- Blog Cards -->
         <div class="container">
             <div class="row">
                 {% for blog in blogs %}
                     <div class="col-md-4 mb-4">
                         <div class="card blog-card">
-                            {% if blog.image %}
-                                <img src="{{ blog.image.url }}" class="card-img-top" alt="{{ blog.title }}">
-                            {% else %}
-                                <img src="{% static 'default_image.png' %}" class="card-img-top" alt="Default Image">
-                            {% endif %}
+                            <img
+                                data-src="{% if blog.image %}{{ blog.image.url }}{% else %}{% static 'default_image.png' %}{% endif %}"
+                                class="card-img-top lazy"
+                                alt="{{ blog.title }}">
                             <div class="card-body">
                                 <h5 class="card-title">{{ blog.title }}</h5>
                                 <p class="card-text">{{ blog.content|truncatewords:30 }}</p>
-                                <!-- Display Edit and Delete buttons only if the user is authenticated -->
                                 {% if user.is_authenticated %}
                                     <a class="btn btn-secondary btn-sm" href="{% url 'update_blog' blog.id %}">
                                         <i class="fas fa-edit"></i> Edit
@@ -131,5 +110,35 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- Font Awesome for icons -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
+    <!-- Lazy Loading and Scroll Animations -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Lazy load images
+            const lazyImages = document.querySelectorAll(".lazy");
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.getAttribute("data-src");
+                        img.classList.remove("lazy");
+                        obs.unobserve(img);
+                    }
+                });
+            });
+            lazyImages.forEach(img => observer.observe(img));
+
+            // Scroll animations for blog cards
+            const blogCards = document.querySelectorAll(".blog-card");
+            const cardObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("in-view");
+                    }
+                });
+            });
+            blogCards.forEach(card => cardObserver.observe(card));
+        });
+    </script>
 </body>
 {% endblock %}

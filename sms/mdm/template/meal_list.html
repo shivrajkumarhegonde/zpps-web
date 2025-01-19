@@ -1,0 +1,48 @@
+{% extends 'template/base.html' %}
+{% load static %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mid Day Meals</title>
+    <link rel="stylesheet" href="{% static 'css/mdm.css' %}">
+</head>
+<body>
+    <h1>Mid Day Meals</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>अ.क्रं.</th>
+                <th>वार</th>
+                <th>पदार्थ</th>
+                <th>खीर</th>
+                <th>स्प्राऊट्स</th>
+                {% if user.is_authenticated %}
+                <th>Actions</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for meal in meals %}
+            <tr>
+                <td>{{ meal.serial_number }}</td>
+                <td>{{ meal.day }}</td>
+                <td>{{ meal.food_item }}</td>
+                <td>{{ meal.kheer }}</td>
+                <td>{{ meal.sprouts }}</td>
+                {% if user.is_authenticated %}
+                <td>
+                    <a href="{% url 'mdm:meal_edit' meal.pk %}">Edit</a> |
+                    <a href="{% url 'mdm:meal_delete' meal.pk %}">Delete</a>
+                </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% if user.is_authenticated %}
+    <a href="{% url 'mdm:meal_add' %}">Add New Meal</a>
+    {% endif %}
+</body>
+{% endblock %}

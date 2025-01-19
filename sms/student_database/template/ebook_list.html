@@ -1,0 +1,86 @@
+{% extends 'template/base.html' %}
+
+{% load static %}  <!-- Add this line to load static files -->
+
+{% block content %}
+<div class="container mt-5" style="max-width: 1200px; padding: 20px; background-color: #f8f9fa; color: #343a40; font-family: Arial, sans-serif;">
+    <style>
+        /* Card Hover Effect */
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Button Hover Effect */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        .btn-danger:hover {
+            background-color: #c82333;
+            transform: scale(1.05);
+        }
+        .btn-success:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        /* Image Hover Effect */
+        .card img {
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .card img:hover {
+            transform: scale(1.05);
+            opacity: 0.8;
+        }
+    </style>
+
+    <div class="text-center mb-5">
+        <h1 class="display-4 mb-3" style="font-weight: 700;">E-Books</h1>
+        <p class="lead" style="color: #6c757d;">Download your required E-books from the list below.</p>
+    </div>
+
+    <div class="row">
+        {% for ebook in ebooks %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    {% if ebook.thumbnail %}
+                        <img src="{{ ebook.thumbnail.url }}" class="img-fluid mb-3" style="border-bottom: 1px solid #ddd;" alt="PDF Thumbnail">
+                    {% else %}
+                        <img src="{% static 'images/default_thumbnail.jpg' %}" class="img-fluid mb-3" style="border-bottom: 1px solid #ddd;" alt="Default Thumbnail">
+                    {% endif %}
+                    <h5 class="card-title mb-3" style="font-weight: 500;">{{ ebook.title }}</h5>
+                    <a href="{{ ebook.file.url }}" target="_blank" class="btn btn-primary">Download</a>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'ebook_delete' ebook.id %}" class="btn btn-danger">Delete</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% if user.is_authenticated %}
+    <div class="text-center mt-4">
+        <a href="{% url 'ebook_upload' %}" class="btn btn-success">Upload New E-Book</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

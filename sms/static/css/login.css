@@ -1,3 +1,8 @@
 body {
-       background: linear-gradient(to right, #2bc0e4, #eaecc6);
-}
+       color: #31fb1f; /* Dark gray text for better contrast */
+       font-family: Arial, sans-serif;
+       margin: 0;
+       padding: 0;
+       overflow-x: hidden;
+   }
+   
