@@ -25,6 +25,7 @@ def ebook_upload(request):
     if request.method == 'POST':
         form = EBookForm(request.POST, request.FILES)
         if form.is_valid():
+
             form.save()
             return redirect('ebook_list')
     else:

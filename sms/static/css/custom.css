@@ -1,4 +1,6 @@
 /* custom.css */
+
+/* Navbar */
 .navbar {
     background: linear-gradient(90deg, #9c27b0, #e040fb);
     padding: 10px 0;
@@ -6,13 +8,15 @@
 
 .nav-link {
     color: #fff !important;
-    font-size: 18px;  /* Adjust the font size here */
+    font-size: 18px; /* Adjust the font size here */
+    text-align: center; /* Ensure links are centered */
 }
 
 .nav-link:hover {
     color: #f5f5f5 !important;
 }
 
+/* Footer */
 .footer {
     background-color: #ff5722;
     color: white;
@@ -23,11 +27,14 @@
 .footer nav ul {
     list-style: none;
     padding: 0;
+    display: flex;
+    justify-content: center; /* Center-align footer links */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
 }
 
 .footer nav ul li {
     display: inline;
-    margin-right: 15px;
+    margin: 5px 10px; /* Adjust margin for better spacing */
 }
 
 .footer nav ul li a {
@@ -47,13 +54,16 @@
     transform: translateY(0);
     opacity: 1;
 }
+
 .dropdown-menu {
     transform: translateY(10px);
     opacity: 0;
     display: block;
     margin-top: 0;
+    text-align: center; /* Center-align dropdown items */
 }
 
+/* Background Video */
 #bgVideo {
     position: fixed;
     top: 0;
@@ -65,9 +75,29 @@
     filter: brightness(60%); /* Optional: Adjust brightness for better readability of content */
 }
 
+/* General Body */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
     overflow-x: hidden;
+}
+
+/* Text Alignment for Mobile */
+@media (max-width: 768px) {
+    .nav-link {
+        text-align: center; /* Ensure navbar links are centered */
+    }
+
+    .dropdown-menu {
+        text-align: center; /* Center-align dropdown items for smaller screens */
+    }
+
+    .footer nav ul {
+        flex-direction: column; /* Stack links vertically */
+    }
+
+    .footer nav ul li {
+        margin: 10px 0; /* Adjust margin for stacked links */
+    }
 }

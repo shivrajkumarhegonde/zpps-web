@@ -64,7 +64,7 @@
                     {% if ebook.thumbnail %}
                         <img src="{{ ebook.thumbnail.url }}" class="img-fluid mb-3" style="border-bottom: 1px solid #ddd;" alt="PDF Thumbnail">
                     {% else %}
-                        <img src="{% static 'images/default_thumbnail.jpg' %}" class="img-fluid mb-3" style="border-bottom: 1px solid #ddd;" alt="Default Thumbnail">
+                        <img src="{% static ebook.file_extension|add:'_logo.png' %}" class="img-fluid mb-3" style="border-bottom: 1px solid #ddd;height:130px; width:115px;" alt="Default Thumbnail">
                     {% endif %}
                     <h5 class="card-title mb-3" style="font-weight: 500;">{{ ebook.title }}</h5>
                     <a href="{{ ebook.file.url }}" target="_blank" class="btn btn-primary">Download</a>
