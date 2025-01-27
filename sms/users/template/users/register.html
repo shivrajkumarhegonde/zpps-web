@@ -3,10 +3,9 @@
 <div class="container mt-5">
     <h1>Register</h1>
     <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-
-        <button type="submit" class="btn btn-primary">Register</button>
-    </form>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
 </div>
 {% endblock %}
