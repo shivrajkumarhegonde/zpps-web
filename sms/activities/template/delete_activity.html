@@ -1,16 +1,22 @@
-<!-- templates/activities/delete_activity.html -->
 {% extends 'template/base.html' %}
 {% load static %}
 
 {% block content %}
 <div class="container mt-5">
-     <link href="{% static 'css/announcements.css' %}" rel="stylesheet">
-    <h1 class="text-center">Delete Activity</h1>
-    <p>Are you sure you want to delete the activity "{{ activity.title }}"?</p>
-    <form method="post">
+  <link href="{% static 'css/activities.css' %}" rel="stylesheet">
+  <div class="activities-header text-center">
+    <h1 class="display-4">Delete Activity</h1>
+  </div>
+
+  <div class="card delete-activity-card">
+    <div class="card-body">
+      <p class="lead">Are you sure you want to delete the activity "{{ activity.title }}"?</p>
+      <form method="post">
         {% csrf_token %}
-        <button type="submit" class="btn btn-danger">Delete</button>
-        <a href="{% url 'activity_list' %}" class="btn btn-secondary">Cancel</a>
-    </form>
+        <button type="submit" class="btn btn-danger btn-lg">Delete</button>
+        <a href="{% url 'activity_list' %}" class="btn btn-secondary btn-lg">Cancel</a>
+      </form>
+    </div>
+  </div>
 </div>
 {% endblock %}

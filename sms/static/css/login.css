@@ -1,8 +1,73 @@
+/* Background Animation */
 body {
-       color: #31fb1f; /* Dark gray text for better contrast */
-       font-family: Arial, sans-serif;
-       margin: 0;
-       padding: 0;
-       overflow-x: hidden;
-   }
-   
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fad0c4, #ffdde1);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Glassmorphism Card */
+.card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+.card-header {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px 15px 0 0;
+    padding: 15px;
+    color: white;
+}
+
+/* Input Fields */
+.form-control {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+}
+
+.form-control:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Button Styling */
+.btn-primary {
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    border: none;
+    padding: 10px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #ff5e78, #ff6f99);
+    transform: translateY(-2px);
+    box-shadow: 0px 5px 15px rgba(255, 118, 136, 0.5);
+}
+
+/* Forgot Password */
+.card-footer a {
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s;
+}
+
+.card-footer a:hover {
+    color: #ff758c;
+}

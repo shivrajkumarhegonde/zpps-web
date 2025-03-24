@@ -1,19 +1,25 @@
-<!-- templates/activities/create_activity.html -->
 {% extends 'template/base.html' %}
 {% load static %}
 
 {% block content %}
 <div class="container mt-5">
-     <link href="{% static 'css/announcements.css' %}" rel="stylesheet">
-    <h1 class="text-center">Create Activity</h1>
-    <form method="post" enctype="multipart/form-data">
+  <link href="{% static 'css/activities.css' %}" rel="stylesheet">
+  <div class="activities-header text-center">
+    <h1 class="display-4">Create Activity</h1>
+  </div>
+
+  <div class="card create-activity-card">
+    <div class="card-body">
+      <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         {{ formset.management_form }}
         {% for form in formset %}
-            {{ form.as_p }}
+          {{ form.as_p }}
         {% endfor %}
-        <button type="submit" class="btn btn-primary">Create</button>
-    </form>
+        <button type="submit" class="btn btn-primary btn-lg">Create</button>
+      </form>
+    </div>
+  </div>
 </div>
 {% endblock %}

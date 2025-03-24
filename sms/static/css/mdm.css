@@ -1,28 +1,156 @@
-body {
-    font-family: Arial, sans-serif;
+/* Custom Styles for School Management Project */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f8fa;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure full height */
+}
+
+.wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex-grow: 1; /* Ensures content expands */
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+.container h1 {
+    background-color: #3498db;
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    font-weight: 600;
 }
 
 table {
     width: 100%;
+    margin: 20px 0;
     border-collapse: collapse;
+    animation: slideIn 0.6s ease-in-out;
+    background-color: #fbdf0a;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table, th, td {
+    border: 1px solid #ce1616;
 }
 
 th, td {
-    padding: 10px;
-    text-align: left;
-    border: 1px solid #ddd;
-}
-
-h1 {
+    padding: 15px;
     text-align: center;
-    margin-bottom: 20px;
 }
 
-a {
-    color: #007bff;
+th {
+    background-color: #0fef47;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+    background-color: #f5f7fa;
+}
+
+tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+tr:hover {
+    background-color: #e3f2fd;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
     text-decoration: none;
+    font-weight: 600;
+    text-align: center;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
 }
 
-a:hover {
-    text-decoration: underline;
+.btn-primary {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Footer Fix */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+    width: 100%;
+    position: relative;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* MDM Page Background */
+.mdm-page {
+    background: linear-gradient(135deg, #004AAD, #00C2FF); /* Deep Blue to Cyan */
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Table Styling */
+.mdm-table {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+}
+.mdm-page {
+    background: linear-gradient(135deg, #004AAD, #00C2FF); /* Deep Blue to Cyan */
+    min-height: 100vh;
+    padding: 20px;
 }

@@ -5,39 +5,110 @@
 <head>
     <meta charset="UTF-8">
     <title>About Our ZPPS Kavathe School</title>
-     <link href="{% static 'css/student_database.css' %}" rel="stylesheet">
+    <link href="{% static 'css/about_school.css' %}" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        .logo-container img {
-            max-width: 600px; /* Adjust the size as needed */
-            max-height: 600px; /* Adjust the size as needed */
-            border: 6px solid #2d88ff; /* Blue border with thickness */
-            border-radius: 50%; /* Make the image circular */
-            padding: 10px; /* Add padding inside the border */
-            display: block; /* Center the image horizontally */
-            margin: 0 auto; /* Center the image horizontally */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
         }
 
-        .bullet {
-            color: #2d88ff; /* Customize bullet color */
-            font-size: 1.5em; /* Adjust bullet size */
-            margin-right: 10px; /* Space between bullet and text */
+        .logo-container img {
+            max-width: 300px;
+            max-height: 300px;
+            border: 6px solid #007bff;
+            border-radius: 50%;
+            padding: 10px;
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .section-header {
-            color: #2d88ff;
-            border-bottom: 2px solid #2d88ff;
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
             padding-bottom: 10px;
             margin-bottom: 20px;
+            font-size: 2rem;
+            font-weight: 700;
         }
 
         .list-group-item {
-            font-family: Arial, sans-serif;
+            font-size: 1.1rem;
+            padding: 15px 20px;
+            border: none;
+            margin-bottom: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .list-group-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .list-group-item span {
-            color: #2d88ff;
-            font-family: Arial, sans-serif;
+            color: #007bff;
+            font-weight: 500;
+        }
+
+        .bullet {
+            color: #007bff;
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+
+        .image-container img {
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .text-center h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .text-center p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .text-center b {
+            color: #333;
+        }
+
+        .mt-5 {
+            margin-top: 3rem !important;
+        }
+
+        .my-4 {
+            margin-top: 1.5rem !important;
+            margin-bottom: 1.5rem !important;
+        }
+
+        .my-5 {
+            margin-top: 3rem !important;
+            margin-bottom: 3rem !important;
+        }
+
+        .mb-4 {
+            margin-bottom: 1.5rem !important;
+        }
+
+        .mt-4 {
+            margin-top: 1.5rem !important;
         }
     </style>
 </head>
@@ -46,13 +117,13 @@
         <div class="text-center">
             <h1 class="section-header">About Our ZPPS Kavathe School</h1>
             <div class="image-container my-4">
-                <img src="{% static '11.jpeg' %}" alt="Description of Image" class="img-fluid rounded">
+                <img src="{% static '11.jpeg' %}" alt="School Image" class="img-fluid">
             </div>
         </div>
 
-        <b><p>ZPPS Kavathe was established in 1938 and is managed by the local body. It is located in a picturesque rural area, specifically in the Solapur North block of Solapur district, Maharashtra. The school consists of grades from 1 to 7 and is co-educational, creating a balanced and inclusive environment for all students.</p></b>
+        <p class="text-center"><b>ZPPS Kavathe was established in 1938 and is managed by the local body. It is located in a picturesque rural area, specifically in the Solapur North block of Solapur district, Maharashtra. The school consists of grades from 1 to 7 and is co-educational, creating a balanced and inclusive environment for all students.</b></p>
 
-        <b><p>The medium of instruction at this school is Marathi, promoting local culture and language. The school operates on a regular schedule with the academic session starting in April. The school has a government building with the following outstanding facilities:</p></b>
+        <p class="text-center"><b>The medium of instruction at this school is Marathi, promoting local culture and language. The school operates on a regular schedule with the academic session starting in April. The school has a government building with the following outstanding facilities:</b></p>
 
         <ul class="list-group mb-4">
             <li class="list-group-item"><span class="bullet">•</span> 7 well-maintained classrooms for instructional purposes</li>
@@ -65,35 +136,35 @@
             <li class="list-group-item"><span class="bullet">•</span> A library with a collection of 250 books, fostering a love for reading</li>
         </ul>
 
-        <p><b>The school takes pride in its vibrant extracurricular activities, including sports, arts, and cultural events, providing a holistic education experience. Our dedicated staff and teachers are committed to nurturing the potential of each student, ensuring they excel academically and personally.</b></p>
+        <p class="text-center"><b>The school takes pride in its vibrant extracurricular activities, including sports, arts, and cultural events, providing a holistic education experience. Our dedicated staff and teachers are committed to nurturing the potential of each student, ensuring they excel academically and personally.</b></p>
 
-        <p><b>Additionally, the school provides nutritious mid-day meals prepared on the premises, ensuring the health and well-being of our students. We strive to create a safe, supportive, and enriching environment where every child can thrive.</b></p>
+        <p class="text-center"><b>Additionally, the school provides nutritious mid-day meals prepared on the premises, ensuring the health and well-being of our students. We strive to create a safe, supportive, and enriching environment where every child can thrive.</b></p>
 
         <div class="text-center my-4">
-            <h2 class="section-header"><span class="bullet">•</span> Join Us</h2>
+            <h2 class="section-header">Join Us</h2>
             <p><b>We invite you to join the ZPPS Kavathe community and be a part of our journey towards excellence in education. Together, we can make a difference and build a brighter future for our children.</b></p>
             <div class="logo-container my-5">
-                <img src="{% static 'mission-vision.png' %}" alt="School Logo" class="img-fluid rounded">
+                <img src="{% static 'mission-vision.png' %}" alt="School Logo" class="img-fluid">
             </div>
         </div>
 
         <section class="mt-4">
-            <h2 class="section-header"><span class="bullet">•</span> Mission</h2>
+            <h2 class="section-header">Mission</h2>
             <p>Our mission is to educate students to the highest levels of academic achievement, to enable them to reach and expand their potential, and to prepare them to become productive, responsible, ethical, creative, and compassionate members of society.</p>
         </section>
 
         <section class="mt-4">
-            <h2 class="section-header"><span class="bullet">•</span> Vision</h2>
+            <h2 class="section-header">Vision</h2>
             <p>Our vision is to be a leading educational institution, recognized for our innovative approach to education, our commitment to student success, and our dedication to community engagement and service.</p>
         </section>
 
         <section class="mt-4">
-            <h2 class="section-header"><span class="bullet">•</span> History</h2>
+            <h2 class="section-header">History</h2>
             <p>Established in 1938, our school has a rich history of academic excellence and community involvement. Over the years, we have evolved to meet the changing needs of our students and the community, while staying true to our core values of integrity, respect, and responsibility.</p>
         </section>
 
         <section class="mt-4">
-            <h2 class="section-header"><span class="bullet">•</span> Core Values</h2>
+            <h2 class="section-header">Core Values</h2>
             <ul class="list-group mb-4">
                 <li class="list-group-item">
                     <span class="bullet">•</span>

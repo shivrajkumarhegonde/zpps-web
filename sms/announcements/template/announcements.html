@@ -5,82 +5,119 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Announcements</title>
   <!-- Bootstrap CSS -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-<link href="{% static 'css/student_database.css' %}" rel="stylesheet">
-
-    <style>
-    .announcement-card {
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s;
-    }
-
-    .announcement-card:hover {
-        transform: scale(1.05);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  <link href="{% static 'css/announcements.css' %}" rel="stylesheet">
+  <style>
+    body {
+        background: linear-gradient(to right, #2bc0e4, #eaecc6);
+        font-family: 'Poppins', sans-serif;
     }
 
     .announcement-header {
-        background: linear-gradient(to bottom, #FF6347, #FF4500); /* New colors */
+        background: linear-gradient(to right, #6a11cb, #2575fc);
         color: #ffffff;
-        padding: 10px;
-        border-radius: 8px;
-        margin-bottom: 20px;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
     .announcement-header h1 {
-        margin: 0;
         font-size: 2.5rem;
-        text-align: center;
+        font-weight: 700;
+        margin: 0;
+        animation: fadeInDown 1s ease-in-out;
     }
 
-    .card-body {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+    .announcement-card {
+        border: none;
+        border-radius: 15px;
+        background: #ffffff;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .announcement-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #333;
     }
 
     .card-text {
-        margin-bottom: 1rem;
+        font-size: 1rem;
+        color: #555;
     }
 
     .btn-primary {
-        background-color: #007bff;
-        border-color: #007bff;
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        border: none;
+        border-radius: 25px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        transition: background 0.3s ease;
     }
 
     .btn-primary:hover {
-        background-color: #0056b3;
-        border-color: #0056b3;
+        background: linear-gradient(to right, #2575fc, #6a11cb);
     }
 
     .btn-warning {
-        background-color: #ffc107;
-        border-color: #ffc107;
+        background: linear-gradient(to right, #ff9a9e, #fad0c4);
+        border: none;
+        border-radius: 25px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        transition: background 0.3s ease;
+    }
+
+    .btn-warning:hover {
+        background: linear-gradient(to right, #fad0c4, #ff9a9e);
     }
 
     .btn-danger {
-        background-color: #dc3545;
-        border-color: #dc3545;
+        background: linear-gradient(to right, #ff416c, #ff4b2b);
+        border: none;
+        border-radius: 25px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        transition: background 0.3s ease;
+    }
+
+    .btn-danger:hover {
+        background: linear-gradient(to right, #ff4b2b, #ff416c);
     }
 
     .announcement-link a {
-        color: #00B4DB; /* Updated color */
+        color: #2575fc;
         text-decoration: none;
-        font-weight: bold;
+        font-weight: 600;
         transition: color 0.3s ease;
     }
 
     .announcement-link a:hover {
-        color: #00B4DB; /* Darker shade for hover */
+        color: #6a11cb;
         text-decoration: underline;
     }
-</style>
 
+    @keyframes fadeInDown {
+        0% {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+  </style>
 </head>
 <body>
     <div class="container mt-5">
