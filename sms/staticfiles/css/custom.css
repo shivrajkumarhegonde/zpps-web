@@ -1,0 +1,213 @@
+/* Custom CSS for Navbar - Modern School Theme */
+
+/* Navbar styling */
+.navbar {
+    background: linear-gradient(135deg, #004AAD, #002855); /* Royal Blue Gradient */
+    padding: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-bottom: 4px solid #FFD700; /* Golden accent */
+}
+
+/* Navbar brand styling */
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFD700 !important; /* Golden text */
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+}
+
+/* Navbar links */
+.nav-item {
+    margin: 0 8px;
+}
+
+.nav-link {
+    font-size: 18px;
+    color: white !important;
+    padding: 10px 15px;
+    background: transparent;
+    border-radius: 8px;
+    transition: 0.3s ease-in-out;
+    font-weight: 500;
+    position: relative;
+}
+
+/* Cool hover effect */
+.nav-link::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 3px;
+    background: #FFD700;
+    transition: width 0.3s ease-in-out;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: #FFD700 !important;
+}
+
+/* Dropdown menu styling */
+.dropdown-menu {
+    background: linear-gradient(135deg, #002855, #004AAD);
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+    padding: 8px 0;
+}
+
+/* Smooth transition for dropdown */
+.dropdown-item {
+    color: white !important;
+    font-size: 16px;
+    padding: 10px 15px;
+    transition: 0.3s ease-in-out;
+}
+
+.dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #FFD700 !important;
+    border-left: 4px solid #FFD700;
+}
+
+/* Smooth Student Dropdown Hover Effect */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(5px);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Navbar Toggler */
+.navbar-toggler {
+    border: none;
+    outline: none;
+}
+
+.navbar-toggler-icon {
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* Footer */
+.footer a {
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+    color: #f1c40f;
+}
+
+.footer .btn-primary {
+    background-color: #f1c40f;
+    border: none;
+}
+
+.footer .btn-primary:hover {
+    background-color: #d4ac0d;
+}
+
+/* ------------------ */
+/* NAVBAR RESPONSIVENESS FIX */
+/* ------------------ */
+
+/* Fix Navbar Overflow & Ensure It Fits at Any Zoom Levels */
+@media screen and (max-width: 1100px) {
+    .navbar-nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-item {
+        margin: 4px 6px; /* Reduced margin to fit more items */
+    }
+
+    .nav-link {
+        font-size: 16px; /* Slightly reduced font size */
+        padding: 8px 12px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-brand {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-link {
+        font-size: 15px;
+        padding: 8px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nav-link {
+        font-size: 14px;
+        padding: 6px 8px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .navbar {
+        padding: 5px;
+    }
+
+    .navbar-brand {
+        font-size: 18px;
+    }
+
+    .nav-link {
+        font-size: 13px;
+        padding: 5px;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Ensure Navbar Never Breaks at Any Zoom Level */
+@media screen and (max-width: 992px) {
+    .navbar-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .nav-item {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-link {
+        display: block;
+        width: 100%;
+    }
+}
+
+

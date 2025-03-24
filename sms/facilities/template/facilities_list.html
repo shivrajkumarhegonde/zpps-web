@@ -1,0 +1,87 @@
+<!-- template/facilities/facilities_list.html -->
+{% extends 'template/base.html' %}
+{% load static %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facilities</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/facilities.css' %}" rel="stylesheet">
+    <style>
+        .facility-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .facility-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .facility-image {
+            height: 200px;
+            object-fit: cover;
+        }
+        .facility-header {
+            background: linear-gradient(to bottom, #007bff, #6c757d);
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .facility-header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card-text {
+            margin-bottom: 1rem;
+        }
+        .btn-group {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="facility-header">
+            <h1>Our Facilities</h1>
+            {% if user.is_authenticated %}
+                <a href="{% url 'add_facility' %}" class="btn btn-success">Add Facility</a>
+            {% endif %}
+        </div>
+
+        <div class="row">
+            {% for facility in facilities %}
+            <div class="col-md-4 mb-4">
+                <div class="card facility-card">
+                    <img src="{{ facility.image.url }}" class="card-img-top facility-image" alt="{{ facility.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ facility.name }}</h5>
+                        <p class="card-text">{{ facility.description }}</p>
+                        {% if user.is_authenticated %}
+                        <div class="btn-group">
+                            <a href="{% url 'update_facility' facility.pk %}" class="btn btn-primary">Update</a>
+                            <a href="{% url 'delete_facility' facility.pk %}" class="btn btn-danger">Delete</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+{% endblock %}
